@@ -70,17 +70,27 @@ function main() {
     gl.enableVertexAttribArray(aColor);
 
     // Grafika interaktif
+    // Tetikus
     function onMouseClick(event) {
         freeze = !freeze;
     }
     document.addEventListener("click", onMouseClick);
+    // Papan ketuk
+    function onKeydown(event) {
+        if (event.keyCode == 32) freeze = !freeze;
+    }
+    function onKeyup(event) {
+        if (event.keyCode == 32) freeze = !freeze;
+    }
+    document.addEventListener("keydown", onKeydown);
+    document.addEventListener("keyup", onKeyup);
 
     function render() {
         gl.clearColor(1.0,      0.65,    0.0,    1.0);  // Oranye
         //            Merah     Hijau   Biru    Transparansi
         gl.clear(gl.COLOR_BUFFER_BIT);
         if (!freeze) {
-            theta -= 0.1;
+            theta += 0.1;
             gl.uniform1f(uTheta, theta);
         }
         gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
