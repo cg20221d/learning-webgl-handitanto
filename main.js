@@ -90,7 +90,7 @@ function main() {
         //            Merah     Hijau   Biru    Transparansi
         gl.clear(gl.COLOR_BUFFER_BIT);
         if (!freeze) {
-            theta += 0.1;
+            theta -= 0.1;
             gl.uniform1f(uTheta, theta);
         }
         gl.drawArrays(gl.TRIANGLE_FAN, 0, 4);
